@@ -104,7 +104,7 @@ const Services = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-40 flex flex-col md:flex-row items-center justify-between gap-8 p-10 rounded-[2.5rem] border border-white/10 bg-white/5"
+          className="mb-24 flex flex-col md:flex-row items-center justify-between gap-8 p-10 rounded-[2.5rem] border border-white/10 bg-white/5"
         >
           <div className="flex items-start gap-6">
             <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center text-2xl flex-shrink-0">🎨</div>
@@ -133,49 +133,49 @@ const Services = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-40"
+          className="mb-24"
         >
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginBottom: '3rem' }}>
+          <div className="flex flex-col gap-2 mb-12">
             <span className="text-accent-secondary font-bold uppercase tracking-widest">GD Publishers</span>
             <h3 className="text-4xl md:text-5xl font-black">The Literary Studio</h3>
-            <p className="text-gray-400 font-medium max-w-2xl" style={{ marginTop: '1rem', lineHeight: 1.7 }}>
+            <p className="text-gray-400 font-medium max-w-2xl mt-4 leading-relaxed">
               GD Publishers discovers, mentors, and publishes debut authors. Founded by Gnandeep Venigalla — 
               himself inspired by Chetan Bhagat and Ravindra Singh — we believe fresh voices deserve global reach.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2" style={{ gap: '2rem' }}>
+          <div className="grid md:grid-cols-2 gap-8">
             {/* Book 1: WHY! */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '2rem', padding: '2.5rem', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}
+              className="bg-white/5 border border-white/10 rounded-[2rem] p-10 flex flex-col gap-5"
             >
-              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1.25rem' }}>
-                <div style={{ width: '60px', height: '80px', background: 'linear-gradient(135deg, #6C1CD3, #FF2E95)', borderRadius: '8px', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 8px 24px rgba(108,28,211,0.4)' }}>
-                  <span style={{ color: 'white', fontWeight: 900, fontSize: '18px', letterSpacing: '-2px' }}>WHY!</span>
+              <div className="flex items-start gap-5">
+                <div className="w-[60px] h-[80px] bg-gradient-to-br from-accent to-accent-secondary rounded-lg flex-shrink-0 flex items-center justify-center shadow-xl shadow-accent/20">
+                  <span className="text-white font-black text-lg tracking-tighter">WHY!</span>
                 </div>
                 <div>
-                  <div style={{ fontSize: '10px', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.2em', color: 'var(--accent)', marginBottom: '4px' }}>Published · Crime Thriller</div>
-                  <h4 className="font-black text-white" style={{ fontSize: '1.4rem' }}>WHY!</h4>
-                  <div style={{ fontSize: '12px', color: 'var(--text-muted)', fontWeight: 700 }}>by Gnandeep Venigalla</div>
+                  <div className="text-[10px] font-black uppercase tracking-[0.2em] text-accent mb-1">Published · Crime Thriller</div>
+                  <h4 className="font-black text-white text-2xl">WHY!</h4>
+                  <div className="text-xs text-muted font-bold">by Gnandeep Venigalla</div>
                 </div>
               </div>
-              <p className="text-gray-400 font-medium" style={{ lineHeight: 1.7, fontSize: '0.95rem' }}>
+              <p className="text-gray-400 font-medium leading-relaxed text-sm">
                 There were so many serial killings going around the city. This is the time for Anusha, who is investigating this case. She faces so many problems until she meets the right person. By solving the case, will she win or lose? Until she finds out <em>Why!</em>
               </p>
-              <p className="text-gray-500 font-medium" style={{ fontSize: '0.85rem', lineHeight: 1.6 }}>
+              <p className="text-gray-500 font-medium text-[13px] leading-relaxed">
                 A crime novel where every scene shows how our society is — a fictional thriller that will make you feel genuinely thrilled.
               </p>
-              <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+              <div className="flex flex-wrap gap-2">
                 {["Crime Thriller", "Social Commentary", "Mystery", "Debut Novel"].map(t => (
-                  <span key={t} style={{ fontSize: '10px', fontWeight: 700, background: 'rgba(108,28,211,0.12)', color: '#9d63ff', padding: '4px 12px', borderRadius: '999px', border: '1px solid rgba(108,28,211,0.2)' }}>{t}</span>
+                  <span key={t} className="text-[10px] font-bold bg-accent/10 text-accent-light px-3 py-1 rounded-full border border-accent/20">{t}</span>
                 ))}
               </div>
-              <div style={{ paddingTop: '1rem', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+              <div className="pt-4 border-t border-white/10">
                 <a href="https://www.instagram.com/gd_creations5/" target="_blank" rel="noopener noreferrer"
-                  style={{ fontSize: '11px', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.15em', color: 'var(--accent)', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                  className="text-[11px] font-black uppercase tracking-widest text-accent flex items-center gap-2">
                   Follow @gd_creations5 for updates →
                 </a>
               </div>
@@ -186,37 +186,36 @@ const Services = () => {
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '2rem', padding: '2.5rem', display: 'flex', flexDirection: 'column', gap: '1.25rem', position: 'relative', overflow: 'hidden' }}
+              className="bg-white/5 border border-white/10 rounded-[2rem] p-10 flex flex-col gap-5 relative overflow-hidden"
             >
               {/* Coming Soon Badge */}
-              <div style={{ position: 'absolute', top: '1.5rem', right: '1.5rem', background: 'rgba(255,46,149,0.15)', border: '1px solid rgba(255,46,149,0.3)', color: '#FF2E95', fontSize: '9px', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.2em', padding: '4px 12px', borderRadius: '999px' }}>
+              <div className="absolute top-6 right-6 bg-accent-secondary/15 border border-accent-secondary/30 text-accent-secondary text-[9px] font-black uppercase tracking-widest px-3 py-1 rounded-full">
                 Coming Soon
               </div>
-              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1.25rem' }}>
-                <div style={{ width: '60px', height: '80px', background: 'linear-gradient(135deg, #FF2E95, #ff6eb4)', borderRadius: '8px', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 8px 24px rgba(255,46,149,0.3)', opacity: 0.7 }}>
-                  <span style={{ color: 'white', fontWeight: 900, fontSize: '12px', textAlign: 'center', lineHeight: '1.2' }}>SWEETY</span>
+              <div className="flex items-start gap-5">
+                <div className="w-[60px] h-[80px] bg-gradient-to-br from-accent-secondary to-pink-400 rounded-lg flex-shrink-0 flex items-center justify-center shadow-xl shadow-accent-secondary/20">
+                  <span className="text-white font-black text-[12px] text-center leading-tight">SWEETY</span>
                 </div>
                 <div>
-                  <div style={{ fontSize: '10px', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.2em', color: '#FF2E95', marginBottom: '4px' }}>Upcoming · Romance</div>
-                  <h4 className="font-black text-white" style={{ fontSize: '1.4rem' }}>Sweety</h4>
-                  <div style={{ fontSize: '12px', color: 'var(--text-muted)', fontWeight: 700 }}>by Gnandeep Venigalla</div>
+                  <div className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-secondary mb-1">Upcoming · Romance</div>
+                  <h4 className="font-black text-white text-2xl">Sweety</h4>
+                  <div className="text-xs text-muted font-bold">by Gnandeep Venigalla</div>
                 </div>
               </div>
-              <p className="text-gray-400 font-medium" style={{ lineHeight: 1.7, fontSize: '0.95rem' }}>
+              <p className="text-gray-400 font-medium leading-relaxed text-sm">
                 A small-town girl with studies as her first priority meets the best cricketer and a handsome senior. 
                 Their journey starts with friendship and turns into love — but what happened with the first guy? Against all backdrops, how does she manage?
               </p>
-              <p className="text-gray-500 font-medium" style={{ fontSize: '0.85rem', lineHeight: 1.6, fontStyle: 'italic' }}>
+              <p className="text-gray-500 font-medium text-[13px] leading-relaxed italic">
                 "Sweety is a hate-love story that will touch your heartstrings."
               </p>
-              <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+              <div className="flex flex-wrap gap-2">
                 {["Romance", "Hate-Love", "College Drama", "Coming Soon"].map(t => (
-                  <span key={t} style={{ fontSize: '10px', fontWeight: 700, background: 'rgba(255,46,149,0.08)', color: '#ff6eb4', padding: '4px 12px', borderRadius: '999px', border: '1px solid rgba(255,46,149,0.15)' }}>{t}</span>
+                  <span key={t} className="text-[10px] font-bold bg-accent-secondary/10 text-pink-300 px-3 py-1 rounded-full border border-accent-secondary/20">{t}</span>
                 ))}
               </div>
-              <div style={{ paddingTop: '1rem', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-                <Link to="/contact"
-                  style={{ fontSize: '11px', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.15em', color: '#FF2E95', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+              <div className="pt-4 border-t border-white/10">
+                <Link to="/contact" className="text-[11px] font-black uppercase tracking-widest text-accent-secondary flex items-center gap-2">
                   Manuscript Inquiry →
                 </Link>
               </div>
@@ -228,20 +227,20 @@ const Services = () => {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            style={{ marginTop: '2rem', padding: '2rem 2.5rem', background: 'rgba(255,255,255,0.03)', borderRadius: '1.5rem', border: '1px solid rgba(255,255,255,0.06)', display: 'flex', alignItems: 'center', gap: '1.5rem', flexWrap: 'wrap' }}
+            className="mt-8 p-8 md:p-10 bg-white/5 rounded-3xl border border-white/10 flex items-center gap-6 flex-wrap"
           >
-            <div style={{ width: '52px', height: '52px', borderRadius: '50%', background: 'var(--accent)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 900, fontSize: '16px', flexShrink: 0 }}>GV</div>
-            <div style={{ flex: 1 }}>
-              <div className="font-black text-white" style={{ marginBottom: '2px' }}>Gnandeep Venigalla</div>
-              <p className="text-gray-400 font-medium" style={{ fontSize: '0.85rem', lineHeight: 1.6 }}>
-                Aspiring author & founder of GD Publishers. Raised in Vijayawada, Andhra Pradesh. Studies CSE at KL University. Inspired by Chetan Bhagat and Ravindra Singh. Also runs GD Creations on Instagram as <a href="https://www.instagram.com/gd_creations5/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}>@gd_creations5</a>.
+            <div className="w-14 h-14 rounded-full bg-accent flex items-center justify-center text-white font-black text-lg flex-shrink-0">GV</div>
+            <div className="flex-1">
+              <div className="font-black text-white mb-1">Gnandeep Venigalla</div>
+              <p className="text-gray-400 font-medium text-sm leading-relaxed">
+                Aspiring author & founder of GD Publishers. Raised in Vijayawada, Andhra Pradesh. Studies CSE at KL University. Inspired by Chetan Bhagat and Ravindra Singh. Also runs GD Creations on Instagram as <a href="https://www.instagram.com/gd_creations5/" target="_blank" rel="noopener noreferrer" className="text-accent underline decoration-accent/20 underline-offset-4">@gd_creations5</a>.
               </p>
             </div>
           </motion.div>
         </motion.div>
 
         {/* GD Creations Showreel */}
-        <div id="creations" className="mb-40">
+        <div id="creations" className="mb-24">
           <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-8">
             <div className="max-w-2xl">
               <span className="text-accent-secondary font-bold uppercase tracking-widest block mb-4">GD Creations</span>
@@ -318,7 +317,7 @@ const Services = () => {
           </div>
         </div>
         {/* GD Photoshop Showcase */}
-        <div className="mb-40 pt-40 border-t border-white/5">
+        <div className="mb-24 pt-24 border-t border-white/5">
           <div className="grid md:grid-cols-2 gap-20 items-center">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -364,7 +363,7 @@ const Services = () => {
         </div>
 
         {/* Trusted By & Testimonials */}
-        <div className="mt-40 pt-40 border-t border-white/5">
+        <div className="mt-24 pt-24 border-t border-white/5">
           <div className="text-center mb-24">
             <span className="text-accent-secondary font-bold uppercase tracking-widest block mb-4">Credibility</span>
             <h3 className="text-4xl md:text-5xl font-black">Trusted by Modern Brands.</h3>

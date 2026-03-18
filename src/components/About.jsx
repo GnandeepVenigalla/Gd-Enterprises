@@ -79,7 +79,7 @@ const About = () => {
     <section id="company" className="section-padding bg-surface">
       <div className="container">
         {/* Vision Header */}
-        <div className="grid md:grid-cols-2 gap-20 items-center mb-40">
+        <div className="grid md:grid-cols-2 gap-12 items-center mb-24">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -147,7 +147,7 @@ const About = () => {
         </div>
 
         {/* Founder's Note Section */}
-        <div className="mb-40">
+        <div className="mb-24">
            <motion.div
              initial={{ opacity: 0, y: 30 }}
              whileInView={{ opacity: 1, y: 0 }}
@@ -197,7 +197,7 @@ const About = () => {
         </div>
 
         {/* Our Journey Timeline */}
-        <div className="mb-40">
+        <div className="mb-24">
           <div className="text-center mb-20">
             <span className="text-accent font-bold uppercase tracking-widest block mb-4">Our Evolution</span>
             <h2 className="text-5xl font-black">Our Journey</h2>
@@ -336,7 +336,7 @@ const About = () => {
         </div>
 
         {/* Paywise: How it Works section */}
-        <div className="mt-40 pt-40 border-t border-gray-100">
+        <div className="mt-24 pt-24 border-t border-gray-100">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-24">
               <span className="text-[#00C853] font-black uppercase tracking-widest block mb-4">Product Spotlight</span>

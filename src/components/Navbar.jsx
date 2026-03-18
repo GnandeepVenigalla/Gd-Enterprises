@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, ArrowRight, ExternalLink } from 'lucide-react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import SubLogo from './SubLogo';
-import { useModal } from '../App';
+import { useModal } from '../context/ModalContext';
 
 const Navbar = () => {
   const { openModal } = useModal();
@@ -72,8 +72,11 @@ const Navbar = () => {
   return (
     <>
       <nav 
-        className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 ${
-          isScrolled || mobileMenuOpen ? 'py-4 glass shadow-lg' : 'py-8 bg-transparent'
+        style={{ zIndex: 1000 }}
+        className={`fixed top-0 left-0 w-full transition-all duration-500 ${
+          isScrolled || mobileMenuOpen || location.pathname !== '/'
+            ? 'py-4 glass shadow-lg border-b border-gray-100' 
+            : 'py-8 bg-transparent'
         }`}
       >
         <div className="container flex justify-between items-center">
@@ -100,10 +103,14 @@ const Navbar = () => {
           <div className="hidden md:flex items-center gap-10">
             <div className="flex items-center gap-8 mr-6">
               {/* Solutions Dropdown */}
-              <div className="relative" ref={solutionsRef}>
-                <button
-                  onClick={() => setSolutionsOpen(prev => !prev)}
-                  className={`text-xs font-bold uppercase tracking-widest transition-all duration-300 whitespace-nowrap flex items-center gap-1 font-black relative py-2 ${
+              <div 
+                className="relative h-full flex items-center group"
+                onMouseEnter={() => setSolutionsOpen(true)}
+                onMouseLeave={() => setSolutionsOpen(false)}
+              >
+                <Link
+                  to="/solutions"
+                  className={`text-sm font-bold uppercase tracking-wider transition-all duration-300 whitespace-nowrap flex items-center gap-1.5 h-full px-1 ${
                     location.pathname.startsWith('/solutions') || solutionsOpen ? 'text-accent' : 'text-primary/70 hover:text-accent'
                   }`}
                 >
@@ -111,73 +118,82 @@ const Navbar = () => {
                   {location.pathname.startsWith('/solutions') && (
                     <motion.div 
                       layoutId="nav-underline" 
-                      className="absolute -bottom-1 left-0 w-full h-0.5 bg-accent shadow-[0_4px_12px_rgba(255,46,149,0.4)]" 
+                      className="absolute bottom-0 left-0 w-full h-0.5 bg-accent shadow-[0_4px_12px_rgba(255,46,149,0.4)]" 
                       initial={false}
                     />
                   )}
-                </button>
+                </Link>
 
-                {/* Mega Menu — rendered with inline styles to guarantee z-index */}
+                {/* Mega Menu Dropdown */}
                 <AnimatePresence>
                   {solutionsOpen && (
                     <motion.div
-                      initial={{ opacity: 0, y: 8, scale: 0.97 }}
+                      initial={{ opacity: 0, y: 10, scale: 0.98 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: 8, scale: 0.97 }}
-                      transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
-                      style={{
-                        position: 'absolute',
-                        top: 'calc(100% + 12px)',
-                        left: '50%',
-                        transform: 'translateX(-50%)',
-                        zIndex: 9999,
-                        minWidth: '480px',
-                      }}
+                      exit={{ opacity: 0, y: 10, scale: 0.98 }}
+                      transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                      className="absolute top-full left-1/2 -translate-x-1/2 pt-4 z-[9999]"
                     >
-                      <div style={{ background: '#fff', border: '1px solid #e5e7eb', borderRadius: '2rem', overflow: 'hidden', display: 'flex', boxShadow: '0 24px 60px -8px rgba(0,0,0,0.18)' }}>
-                        {/* Left: Categories */}
-                        <div style={{ background: 'var(--surface)', padding: '2rem', width: '50%' }}>
-                          <span style={{ fontSize: '10px', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.2em', color: 'var(--accent)', display: 'block', marginBottom: '1.5rem' }}>Industries</span>
-                          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-                            {solutionsData.categories.map(cat => (
-                              <div key={cat.name}>
-                                <div style={{ fontSize: '12px', fontWeight: 900, color: 'var(--primary)', marginBottom: '2px' }}>{cat.name}</div>
-                                <div style={{ fontSize: '10px', color: 'var(--text-muted)', fontWeight: 700 }}>{cat.desc}</div>
-                              </div>
+                      {/* Invisible bridge to prevent mouse-out between trigger and menu */}
+                      <div className="absolute top-0 left-0 w-full h-4 -translate-y-4" />
+                      
+                      <div className="bg-white border border-slate-100 rounded-[2.5rem] shadow-[0_40px_80px_-15px_rgba(0,0,0,0.2)] overflow-hidden flex w-[680px]">
+                        {/* Left Column: Featured Section */}
+                        <div className="w-[38%] bg-slate-50/50 p-10 border-r border-slate-50 flex flex-col justify-between">
+                          <div>
+                            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent block mb-4">Core Ecosystem</span>
+                            <h4 className="text-xl font-black text-primary leading-tight mb-4">Empowering <br />Modern Enterprise</h4>
+                            <p className="text-xs text-slate-400 font-medium leading-relaxed">Discover our specialized subsidiaries built for the next generation of commerce and media.</p>
+                          </div>
+                          
+                          <Link 
+                            to="/solutions" 
+                            onClick={() => setSolutionsOpen(false)}
+                            className="group/link flex items-center gap-2 text-[10px] font-black text-primary hover:text-accent transition-colors pt-10 uppercase tracking-widest"
+                          >
+                            Browse All <ArrowRight size={14} className="group-hover/link:translate-x-1 transition-transform" />
+                          </Link>
+                        </div>
+
+                        {/* Right Columns: Links Grid */}
+                        <div className="w-[62%] p-8">
+                          <div className="grid grid-cols-2 gap-x-6 gap-y-2">
+                            {solutionsData.links.map(link => (
+                              link.href ? (
+                                <a
+                                  key={link.name}
+                                  href={link.href}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  onClick={() => setSolutionsOpen(false)}
+                                  className="group/item flex items-center gap-3 p-3 rounded-2xl hover:bg-slate-50 transition-all border border-transparent hover:border-slate-100"
+                                >
+                                  <div className="w-10 h-10 rounded-xl bg-white shadow-sm flex items-center justify-center group-hover/item:scale-110 transition-transform">
+                                    <SubLogo name={link.name} size={18} />
+                                  </div>
+                                  <div className="flex flex-col">
+                                    <span className="text-sm font-bold text-primary group-hover/item:text-accent transition-colors">{link.name}</span>
+                                    <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest leading-none mt-0.5">{link.category || 'Platform'}</span>
+                                  </div>
+                                </a>
+                              ) : (
+                                <Link
+                                  key={link.name}
+                                  to={link.path}
+                                  onClick={() => setSolutionsOpen(false)}
+                                  className="group/item flex items-center gap-3 p-3 rounded-2xl hover:bg-slate-50 transition-all border border-transparent hover:border-slate-100"
+                                >
+                                  <div className="w-10 h-10 rounded-xl bg-white shadow-sm flex items-center justify-center group-hover/item:scale-110 transition-transform">
+                                    <SubLogo name={link.name} size={18} />
+                                  </div>
+                                  <div className="flex flex-col">
+                                    <span className="text-sm font-bold text-primary group-hover/item:text-accent transition-colors">{link.name}</span>
+                                    <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest leading-none mt-0.5">{link.category || 'Service'}</span>
+                                  </div>
+                                </Link>
+                              )
                             ))}
                           </div>
-                        </div>
-                        {/* Right: Direct Links */}
-                        <div style={{ padding: '2rem', width: '50%', background: '#fff', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                          {solutionsData.links.map(link => (
-                            link.href ? (
-                              <a
-                                key={link.name}
-                                href={link.href}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                onClick={() => setSolutionsOpen(false)}
-                                style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '4px 0', textDecoration: 'none' }}
-                                onMouseEnter={e => e.currentTarget.querySelector('span').style.color = 'var(--accent)'}
-                                onMouseLeave={e => e.currentTarget.querySelector('span').style.color = 'var(--text-muted)'}
-                              >
-                                <SubLogo name={link.name} size={18} />
-                                <span style={{ fontSize: '12px', fontWeight: 700, color: 'var(--text-muted)', transition: 'color 0.2s' }}>{link.name}</span>
-                              </a>
-                            ) : (
-                              <Link
-                                key={link.name}
-                                to={link.path}
-                                onClick={() => setSolutionsOpen(false)}
-                                style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '4px 0', textDecoration: 'none' }}
-                                onMouseEnter={e => e.currentTarget.querySelector('span').style.color = 'var(--accent)'}
-                                onMouseLeave={e => e.currentTarget.querySelector('span').style.color = 'var(--text-muted)'}
-                              >
-                                <SubLogo name={link.name} size={18} />
-                                <span style={{ fontSize: '12px', fontWeight: 700, color: 'var(--text-muted)', transition: 'color 0.2s' }}>{link.name}</span>
-                              </Link>
-                            )
-                          ))}
                         </div>
                       </div>
                     </motion.div>
@@ -196,7 +212,7 @@ const Navbar = () => {
                   <NavLink
                     to={link.path}
                     className={({ isActive }) => 
-                      `text-xs font-bold uppercase tracking-widest transition-all duration-300 whitespace-nowrap relative py-2 ${
+                      `text-sm font-bold uppercase tracking-wider transition-all duration-300 whitespace-nowrap relative py-3 px-1 ${
                         isActive ? 'text-accent' : 'text-primary/70 hover:text-accent'
                       }`
                     }
@@ -207,7 +223,7 @@ const Navbar = () => {
                         {(isActive || (link.path === '/' && location.pathname === '/')) && (
                           <motion.div 
                             layoutId="nav-underline" 
-                            className="absolute -bottom-1 left-0 w-full h-0.5 bg-accent shadow-[0_4px_12px_rgba(255,46,149,0.4)]" 
+                            className="absolute bottom-0 left-0 w-full h-0.5 bg-accent shadow-[0_4px_12px_rgba(255,46,149,0.4)]" 
                             initial={false}
                           />
                         )}
@@ -217,12 +233,13 @@ const Navbar = () => {
                 </motion.div>
               ))}
             </div>
-            <button
-              onClick={openModal}
-              className="btn btn-outline-primary py-3 px-8 text-sm whitespace-nowrap font-black transition-all"
+            
+            <Link
+              to="/contact"
+              className="btn btn-outline-primary !h-12 py-0 px-8 text-sm whitespace-nowrap font-bold transition-all inline-flex items-center justify-center no-underline"
             >
               Connect with us
-            </button>
+            </Link>
           </div>
 
           {/* Mobile Toggle */}

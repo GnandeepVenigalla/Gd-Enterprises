@@ -52,10 +52,13 @@ const Careers = () => {
               ))}
             </div>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link to="/contact" className="btn btn-primary px-10 py-5 inline-flex items-center justify-center">
+              <Link to="/contact" className="btn btn-primary px-10 inline-flex items-center justify-center">
                 View All Openings <ArrowRight className="ml-2" size={18} />
               </Link>
-              <Link to="/contact" className="btn border-2 border-primary/5 hover:border-primary/20 px-10 py-5 font-black text-sm inline-flex items-center justify-center">
+              <Link 
+                to="/contact" 
+                className="btn btn-outline-primary px-10 font-bold text-sm inline-flex items-center justify-center"
+              >
                 General Application
               </Link>
             </div>

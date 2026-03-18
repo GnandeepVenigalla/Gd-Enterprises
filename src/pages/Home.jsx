@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
-    <div className="pt-32">
+    <div>
       <Hero />
       <LogoTicker />
       <Milestones />
@@ -27,43 +27,43 @@ const Home = () => {
               GD Enterprises is a multi-industry ecosystem designed to provide technical independence 
               and creative freedom to the world's most ambitious projects.
             </p>
-            <div className="grid md:grid-cols-3 gap-8 mb-20">
+            <div className="grid md:grid-cols-3 gap-10 mb-20 px-4 md:px-0">
 
               {/* FinTech Card */}
-              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0 }}
-                className="p-8 rounded-[2.5rem] bg-white border border-gray-100 text-left hover:shadow-lg hover:border-[#00C853]/30 transition-all group">
-                <div className="w-14 h-14 rounded-2xl bg-[#00C853]/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform text-2xl">💳</div>
-                <h3 className="text-2xl font-black mb-3">FinTech</h3>
-                <p className="text-sm text-muted font-medium mb-5 leading-relaxed">Reimagining money management and group settlements for the modern world.</p>
-                <div className="flex flex-wrap gap-2">
+              <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
+                className="p-10 rounded-[3rem] bg-white border border-gray-100 text-left hover:shadow-2xl hover:border-[#00C853]/20 hover:-translate-y-2 transition-all group flex flex-col">
+                <div className="w-16 h-16 rounded-2xl bg-[#00C853]/10 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform text-3xl">💳</div>
+                <h3 className="text-2xl font-black mb-4">FinTech</h3>
+                <p className="text-base text-muted font-medium mb-8 leading-relaxed">Reimagining money management and group settlements for the modern world.</p>
+                <div className="flex flex-wrap gap-2.5 mt-auto">
                   {["Split Bills", "Instant Settlements", "Group Analytics", "AI-Powered"].map(f => (
-                    <span key={f} className="text-[10px] font-bold bg-[#00C853]/5 text-[#00C853] border border-[#00C853]/15 px-3 py-1 rounded-full">{f}</span>
+                    <span key={f} className="text-[11px] font-black uppercase tracking-widest bg-[#00C853]/5 text-[#00C853] border border-[#00C853]/10 px-4 py-1.5 rounded-full">{f}</span>
                   ))}
                 </div>
               </motion.div>
 
               {/* Streaming Card */}
-              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}
-                className="p-8 rounded-[2.5rem] bg-white border border-gray-100 text-left hover:shadow-lg hover:border-[#6C1CD3]/30 transition-all group">
-                <div className="w-14 h-14 rounded-2xl bg-[#6C1CD3]/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform text-2xl">▶️</div>
-                <h3 className="text-2xl font-black mb-3">Streaming</h3>
-                <p className="text-sm text-muted font-medium mb-5 leading-relaxed">Powering the next generation of video content on our proprietary GD Player platform.</p>
-                <div className="flex flex-wrap gap-2">
+              <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 }}
+                className="p-10 rounded-[3rem] bg-white border border-gray-100 text-left hover:shadow-2xl hover:border-[#6C1CD3]/20 hover:-translate-y-2 transition-all group flex flex-col">
+                <div className="w-16 h-16 rounded-2xl bg-[#6C1CD3]/10 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform text-3xl">▶️</div>
+                <h3 className="text-2xl font-black mb-4">Streaming</h3>
+                <p className="text-base text-muted font-medium mb-8 leading-relaxed">Powering the next generation of video content on our proprietary GD Player platform.</p>
+                <div className="flex flex-wrap gap-2.5 mt-auto">
                   {["Global Reach", "HD Streaming", "Creator Tools", "Own Platform"].map(f => (
-                    <span key={f} className="text-[10px] font-bold bg-[#6C1CD3]/5 text-[#6C1CD3] border border-[#6C1CD3]/15 px-3 py-1 rounded-full">{f}</span>
+                    <span key={f} className="text-[11px] font-black uppercase tracking-widest bg-[#6C1CD3]/5 text-[#6C1CD3] border border-[#6C1CD3]/10 px-4 py-1.5 rounded-full">{f}</span>
                   ))}
                 </div>
               </motion.div>
 
               {/* Media Card */}
-              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}
-                className="p-8 rounded-[2.5rem] bg-white border border-gray-100 text-left hover:shadow-lg hover:border-accent/30 transition-all group">
-                <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform text-2xl">📖</div>
-                <h3 className="text-2xl font-black mb-3">Media</h3>
-                <p className="text-sm text-muted font-medium mb-5 leading-relaxed">Publishing and producing world-class creations through GD Publishers and Creations.</p>
-                <div className="flex flex-wrap gap-2">
+              <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }}
+                className="p-10 rounded-[3rem] bg-white border border-gray-100 text-left hover:shadow-2xl hover:border-accent/20 hover:-translate-y-2 transition-all group flex flex-col">
+                <div className="w-16 h-16 rounded-2xl bg-accent/10 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform text-3xl">📖</div>
+                <h3 className="text-2xl font-black mb-4">Media</h3>
+                <p className="text-base text-muted font-medium mb-8 leading-relaxed">Publishing and producing world-class creations through GD Publishers and Creations.</p>
+                <div className="flex flex-wrap gap-2.5 mt-auto">
                   {["Novel Publishing", "Video Production", "Brand Design", "Cinematic"].map(f => (
-                    <span key={f} className="text-[10px] font-bold bg-accent/5 text-accent border border-accent/15 px-3 py-1 rounded-full">{f}</span>
+                    <span key={f} className="text-[11px] font-black uppercase tracking-widest bg-accent/5 text-accent border border-accent/10 px-4 py-1.5 rounded-full">{f}</span>
                   ))}
                 </div>
               </motion.div>

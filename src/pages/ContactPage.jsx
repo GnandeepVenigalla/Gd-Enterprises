@@ -132,7 +132,7 @@ const ContactForm = () => {
 
 const ContactPage = () => {
   return (
-    <div className="pt-32">
+    <div className="pt-24">
       <section className="section-padding bg-white overflow-hidden relative">
         <div className="aurora aurora-1 opacity-5"></div>
         <div className="container relative z-10">
@@ -143,7 +143,7 @@ const ContactPage = () => {
               transition={{ duration: 0.8 }}
             >
               <div className="accent-line"></div>
-              <h2 className="text-6xl md:text-8xl mb-8 font-black tracking-tighter">
+              <h2 className="text-5xl md:text-8xl mb-10 font-black tracking-tighter leading-[0.95] md:leading-[0.85]">
                 Let's Build the <br />
                 <span className="text-gradient">Next Chapter.</span>
               </h2>
@@ -163,15 +163,15 @@ const ContactPage = () => {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.1 }}
-                  className="group p-8 rounded-[2.5rem] bg-surface border border-gray-100 hover:border-accent/20 hover:shadow-xl transition-all"
+                  className="group p-6 md:p-8 rounded-[2rem] bg-surface border border-gray-100 hover:border-accent/20 hover:shadow-xl transition-all"
                 >
                   <div className="flex items-center gap-4 mb-6">
-                    <div className="p-3 bg-white rounded-xl shadow-sm group-hover:scale-110 transition-transform">
-                      {card.icon}
+                    <div className="w-12 h-12 rounded-xl bg-white shadow-sm border border-gray-50 flex items-center justify-center group-hover:scale-110 transition-transform flex-shrink-0">
+                      {React.cloneElement(card.icon, { size: 20 })}
                     </div>
-                    <h4 className="text-xl font-bold">{card.title}</h4>
+                    <h4 className="text-xl font-black tracking-tight">{card.title}</h4>
                   </div>
-                  <p className="text-sm text-muted font-medium mb-8 leading-relaxed">
+                  <p className="text-sm text-muted font-medium mb-6 leading-relaxed">
                     {card.desc}
                   </p>
                   <a 

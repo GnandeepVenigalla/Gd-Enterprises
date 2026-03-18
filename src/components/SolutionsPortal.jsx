@@ -62,55 +62,55 @@ const SolutionsPortal = () => {
           </motion.div>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid lg:grid-cols-3 gap-10">
           {paths.map((path, i) => (
             <motion.div
               key={path.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="glass-dark group rounded-[3.5rem] overflow-hidden flex flex-col h-full"
+              transition={{ delay: i * 0.1, duration: 0.6 }}
+              className="glass-dark group rounded-[3rem] overflow-hidden flex flex-col h-full border border-white/5 hover:border-white/10"
             >
               {/* Image Preview */}
-              <div className="h-48 overflow-hidden relative">
+              <div className="h-56 overflow-hidden relative">
                 <img 
                   src={path.image} 
                   alt={path.title} 
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" 
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000" 
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary to-transparent opacity-60"></div>
-                <div className="absolute bottom-6 left-8 flex items-center gap-4">
-                  <div className="p-3 bg-white/10 backdrop-blur-md rounded-2xl">
-                    {path.icon}
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent"></div>
+                <div className="absolute bottom-8 left-10">
+                  <div className="p-4 bg-white/10 backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl">
+                    {React.cloneElement(path.icon, { size: 28 })}
                   </div>
                 </div>
               </div>
 
               {/* Content */}
-              <div className="p-10 flex flex-col flex-grow">
-                <h3 className="text-3xl font-black mb-4">{path.title}</h3>
-                <p className="text-gray-400 font-medium mb-10 leading-relaxed min-h-[60px]">
+              <div className="p-10 md:p-12 flex flex-col flex-grow">
+                <h3 className="text-3xl font-black mb-6 tracking-tighter">{path.title}</h3>
+                <p className="text-gray-400 font-medium mb-8 leading-relaxed text-base">
                   {path.desc}
                 </p>
 
-                <div className="space-y-4 mt-auto">
+                <div className="space-y-3 mt-auto">
                   {path.items.map((item, idx) => (
                     <a
                       key={idx}
                       href={item.link}
                       target={item.link.startsWith('http') ? "_blank" : "_self"}
-                      className={`flex items-center justify-between p-5 rounded-2xl transition-all group/btn ${
+                      className={`flex items-center justify-between p-6 rounded-[1.5rem] transition-all group/btn ${
                         item.isCTA 
-                          ? 'bg-white text-primary font-black hover:bg-accent-secondary hover:text-white' 
-                          : 'bg-white/5 hover:bg-white/10 text-gray-300'
+                          ? 'bg-accent text-white font-black hover:bg-white hover:text-primary' 
+                          : 'bg-white/5 hover:bg-white/10 text-gray-300 border border-white/5'
                       }`}
                     >
-                      <div>
-                        <div className="font-bold">{item.name}</div>
-                        <div className={`text-[10px] uppercase tracking-widest font-black opacity-60 ${item.isCTA ? 'group-hover/btn:text-white' : ''}`}>
+                      <div className="flex flex-col">
+                        <span className="font-bold text-base">{item.name}</span>
+                        <span className={`text-[10px] uppercase tracking-[0.2em] font-black opacity-50 ${item.isCTA ? 'group-hover/btn:text-primary' : ''}`}>
                           {item.type}
-                        </div>
+                        </span>
                       </div>
                       {item.isCTA ? <ArrowRight size={20} className="group-hover/btn:translate-x-2 transition-transform" /> : <ExternalLink size={16} className="group-hover/btn:scale-110 transition-transform" />}
                     </a>

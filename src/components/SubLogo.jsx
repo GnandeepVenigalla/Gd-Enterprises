@@ -1,8 +1,25 @@
 import React from 'react';
 import { Play, Video, Palette, Book, Globe, Zap, Smartphone } from 'lucide-react';
 
-const SubLogo = ({ name, size = 24, className = "" }) => {
+const SubLogo = ({ name, size = 24, className = "", imgSrc = null, hideBrand = false }) => {
   const getIcon = () => {
+    if (imgSrc) {
+      return (
+        <img 
+          src={imgSrc} 
+          alt={name} 
+          style={{ width: size, height: size, objectFit: 'contain' }}
+          onError={(e) => {
+            e.target.style.display = 'none';
+            e.target.nextSibling.style.display = 'block';
+          }}
+        />
+      );
+    }
+    return null;
+  };
+
+  const getFallbackIcon = () => {
     switch (name.toLowerCase()) {
       case 'gd player':
         return <Play size={size} className="fill-current" />;
@@ -13,6 +30,7 @@ const SubLogo = ({ name, size = 24, className = "" }) => {
       case 'gd publishers':
         return <Book size={size} />;
       case 'gd websites':
+      case 'gd website':
         return <Globe size={size} />;
       case 'paywise':
         return <Smartphone size={size} />;
@@ -23,11 +41,20 @@ const SubLogo = ({ name, size = 24, className = "" }) => {
 
   return (
     <div className={`flex items-center gap-2 ${className}`}>
-      <div className="flex items-center justify-center p-2 bg-primary rounded-lg text-white">
-        <span className="text-[10px] font-black leading-none">GD</span>
-      </div>
+      {!hideBrand && (
+        <div className="flex items-center justify-center p-2 bg-primary rounded-lg text-white">
+          <span className="text-[10px] font-black leading-none">GD</span>
+        </div>
+      )}
       <div className="text-accent">
-        {getIcon()}
+        {imgSrc ? (
+          <>
+            {getIcon()}
+            <div style={{ display: 'none' }}>{getFallbackIcon()}</div>
+          </>
+        ) : (
+          getFallbackIcon()
+        )}
       </div>
     </div>
   );

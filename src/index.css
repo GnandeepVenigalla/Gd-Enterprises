@@ -12,10 +12,12 @@
   --text-main: #000c24;
   --text-muted: #5e6680;
   --text-on-dark: #ffffff;
+  --border-radius-sm: 0.5rem;
+  --border-radius-md: 0.75rem;
   --border-radius-lg: 1.5rem;
   --border-radius-xl: 2.5rem;
   --border-radius-2xl: 3.5rem;
-  --transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   --max-width: 1400px;
 }
 
@@ -37,20 +39,20 @@ body {
 h1, h2, h3, h4 {
   font-family: 'Bricolage Grotesque', sans-serif;
   font-weight: 800;
-  line-height: 1.05;
-  letter-spacing: -0.05em;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
   color: var(--primary);
 }
 
-h1 { font-size: 6rem; }
-h2 { font-size: 4rem; }
-h3 { font-size: 2.5rem; }
+h1 { font-size: 5rem; }
+h2 { font-size: 3.5rem; }
+h3 { font-size: 2.25rem; }
 h4 { font-size: 1.5rem; }
 
 @media (max-width: 768px) {
-  h1 { font-size: 3rem; }
-  h2 { font-size: 2.25rem; }
-  h3 { font-size: 1.75rem; }
+  h1 { font-size: 3.5rem; }
+  h2 { font-size: 2.5rem; }
+  h3 { font-size: 2rem; }
   h4 { font-size: 1.25rem; }
 }
 
@@ -67,12 +69,18 @@ ul {
 .container {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 4rem;
+  padding: 0 5rem;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 3rem;
+  }
 }
 
 @media (max-width: 768px) {
   .container {
-    padding: 0 1.5rem;
+    padding: 0 2rem;
   }
 }
 
@@ -143,14 +151,15 @@ ul {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 1.25rem 2.5rem;
-  font-weight: 700;
+  padding: 1rem 2.25rem;
+  font-weight: 600;
   border-radius: 9999px;
   cursor: pointer;
   transition: var(--transition);
-  border: none;
-  font-size: 1.1rem;
+  border: 2px solid transparent;
+  font-size: 1rem;
   font-family: 'Inter', sans-serif;
+  height: 60px; /* Fixed height for consistency */
 }
 
 .btn-primary {
@@ -202,7 +211,7 @@ ul {
 .btn-outline-primary {
   background: transparent;
   color: var(--primary);
-  border: 2px solid rgba(0, 0, 0, 0.1);
+  border: 2px solid rgba(0, 12, 36, 0.15);
 }
 
 .btn-outline-primary:hover {
@@ -213,7 +222,7 @@ ul {
 }
 
 /* Utilities */
-.section-padding { padding: 160px 0; }
+.section-padding { padding: 100px 0; }
 @media (max-width: 768px) {
   .section-padding { padding: 80px 0; }
 }
